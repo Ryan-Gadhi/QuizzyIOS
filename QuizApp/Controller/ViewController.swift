@@ -19,24 +19,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // adding a new look for the buttons
         adjustButtons()
-        updateLogicAndUI(userAnswer:"hello bad desing")
+        updateQuestions()
     }
 
     @IBAction func ButtonPressed(_ sender: UIButton) {
         let userChoice = sender.currentTitle! // forcing unwrapp
-        updateLogicAndUI(userAnswer: userChoice)
         
-        print(userChoice)
+        ScoreLabel.text = "Your Score: " + String(brain.getUpdatedScore(userAnswer: userChoice))
+        
+        updateQuestions()
         
     }
     
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var QuestionLabel: UILabel!
     
-    func updateLogicAndUI(userAnswer:String){
+    func updateQuestions(){
         
         QuestionLabel.text = brain.getNextQuestion()
-        ScoreLabel.text = String(brain.getUpdatedScore(userAnswer: userAnswer))
+        
         
     }
     

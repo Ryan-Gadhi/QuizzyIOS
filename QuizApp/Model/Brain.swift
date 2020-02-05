@@ -10,14 +10,14 @@ import Foundation
 
 struct Brain{
     
-    var questionNumber = 0
+    
     var score = 0
-    var currentQuestionIndex = 0
+    var currentQuestionIndex = -1 // -1 so that we increment to 0 the first run
     var totalScore = 0
     
     let quiz = [
-    Question(q: "A slug's blood is green.", a: "True"),
-    Question(q: "Approximately one quarter of human bones are in the feet.", a: "True"),
+    Question(q: "A slug's blood is green.", a: "False"),
+    Question(q: "Approximately one quarter of human bones are in the feet.", a: "False"),
     Question(q: "The total surface area of two human lungs is approximately 70 square metres.", a: "True"),
     Question(q: "In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.", a: "True"),
     Question(q: "In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.", a: "False"),
@@ -33,8 +33,8 @@ struct Brain{
     
     mutating func getUpdatedScore(userAnswer:String) -> Int {
         
-        let answerToCurrentQustion = quiz[questionNumber].answer
-              
+        let answerToCurrentQustion = quiz[currentQuestionIndex].answer
+        print(answerToCurrentQustion)
         if userAnswer == answerToCurrentQustion {
           score += 1
         }
